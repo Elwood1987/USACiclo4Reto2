@@ -29,7 +29,7 @@ public class UserController {
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public User update(@RequestBody User user){
-        return userService.save(user);
+        return userService.update(user);
     }
 
     @DeleteMapping("/{id}")
