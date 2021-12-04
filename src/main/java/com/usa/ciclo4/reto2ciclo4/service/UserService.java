@@ -40,31 +40,31 @@ public class UserService {
 
     public User update(User user) {
         if(user.getId() != null) {
-            Optional<User> user1Db = userRepository.getUser(user.getId());
-            if (!user1Db.isEmpty()) {
-                if (user.getIdentification() == null) {
-                    user1Db.get().setIdentification(user.getIdentification());
+            Optional<User> dbUser = userRepository.getUser(user.getId());
+            if (!dbUser.isEmpty()) {
+                if (user.getIdentification() != null) {
+                    dbUser.get().setIdentification(user.getIdentification());
                 }
-                if (user.getName() == null) {
-                    user1Db.get().setName(user.getName());
+                if (user.getName() != null) {
+                    dbUser.get().setName(user.getName());
                 }
-                if (user.getAddress() == null) {
-                    user1Db.get().setAddress(user.getAddress());
+                if (user.getAddress() != null) {
+                    dbUser.get().setAddress(user.getAddress());
                 }
-                if (user.getCellPhone() == null) {
-                    user1Db.get().setCellPhone(user.getCellPhone());
+                if (user.getCellPhone() != null) {
+                    dbUser.get().setCellPhone(user.getCellPhone());
                 }
-                if (user.getEmail() == null) {
-                    user1Db.get().setEmail(user.getEmail());
+                if (user.getEmail() != null) {
+                    dbUser.get().setEmail(user.getEmail());
                 }
-                if (user.getPassword() == null) {
-                    user1Db.get().setPassword(user.getPassword());
+                if (user.getPassword() != null) {
+                    dbUser.get().setPassword(user.getPassword());
                 }
-                if (user.getZone() == null) {
-                    user1Db.get().setZone(user.getZone());
+                if (user.getZone() != null) {
+                    dbUser.get().setZone(user.getZone());
                 }
-                userRepository.save(user1Db.get());
-                return user1Db.get();
+                userRepository.save(dbUser.get());
+                return dbUser.get();
             } else {
                 return user;
             }
